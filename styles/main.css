@@ -4,18 +4,18 @@
   --at-blood-bg:          rgba(196, 0, 11, 0.06);
   --at-blood-border:      rgba(196, 0, 11, 0.25);
 
-  --at-gold-accent:       #C9A100;
-  --at-gold-badge-bg:     #FFF0B3;
-  --at-gold-badge-text:   #5A4400;
-  --at-gold-border:       rgba(201, 161, 0, 0.35);
-  --at-gold-bg:           rgba(201, 161, 0, 0.07);
+  --at-gold-accent:       #da9d00;
+  --at-gold-badge-bg:     rgba(218, 157, 0, 0.15);
+  --at-gold-badge-text:   #da9d00;
+  --at-gold-border:       rgba(218, 157, 0, 0.35);
+  --at-gold-bg:           rgba(218, 157, 0, 0.07);
 
   /* Mapping to existing semantic tokens */
   --rouge: var(--at-blood);
   --rouge-l: #F04535; /* This was a light version of the old rouge, I'll keep it or update if needed */
   --rouge-dim: var(--at-blood-bg);
   --or: var(--at-gold-accent);
-  --or-l: #F0AE1A; /* This was a light version of the old or, I'll keep it or update if needed */
+  --or-l: #f5b000; /* Adjusted light version for #da9d00 */
   --or-dim: var(--at-gold-bg);
 
   --fond: #111318;
@@ -41,11 +41,11 @@
     --at-blood-bg:          rgba(255, 77, 85, 0.08);
     --at-blood-border:      rgba(255, 77, 85, 0.30);
 
-    --at-gold-accent:       #FFE34D;
-    --at-gold-badge-bg:     rgba(255, 227, 77, 0.15);
-    --at-gold-badge-text:   #FFE34D;
-    --at-gold-border:       rgba(255, 227, 77, 0.30);
-    --at-gold-bg:           rgba(255, 227, 77, 0.06);
+    --at-gold-accent:       #da9d00;
+    --at-gold-badge-bg:     rgba(218, 157, 0, 0.15);
+    --at-gold-badge-text:   #da9d00;
+    --at-gold-border:       rgba(218, 157, 0, 0.30);
+    --at-gold-bg:           rgba(218, 157, 0, 0.06);
 
     /* Mapping to existing semantic tokens for Dark mode */
     --rouge: var(--at-blood);
@@ -90,22 +90,44 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
     font-family: var(--ff-titre), serif;
     font-size: 1.45rem;
     font-weight: 700;
     color: var(--texte);
     text-decoration: none;
+    gap: 0.75rem;
+    z-index: 2;
+}
+
+.logo span {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 1.1em;
+    width: auto;
+    margin: 0 0.05em;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .logo em {
     font-style: normal;
-    color: var(--rouge);
+    color: #da9d00;
 }
 
 nav ul {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     gap: 2.5rem;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul a {
@@ -131,6 +153,7 @@ nav ul a:hover {
     border-radius: 4px;
     border: 1px solid var(--rouge);
     transition: background .2s, color .2s, box-shadow .2s;
+    z-index: 2;
 }
 
 .nav-btn:hover {
@@ -1010,15 +1033,28 @@ footer {
 }
 
 .f-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--ff-titre), serif;
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--texte);
 }
 
-.f-logo em {
-    font-style: normal;
-    color: var(--rouge);
+.f-logo span {
+    display: flex;
+    align-items: center;
 }
+
+.f-logo img {
+    height: 1.1em;
+    width: auto;
+    margin: 0 0.05em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 
 .f-copy {
     font-family: var(--ff-mono), serif;
@@ -1392,6 +1428,9 @@ footer {
 @media (max-width: 960px) {
     nav ul {
         display: none;
+        position: static;
+        transform: none;
+        left: auto;
     }
 
     .sol-inner {
